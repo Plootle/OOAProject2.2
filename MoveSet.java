@@ -26,23 +26,44 @@ public class MoveSet {
         return dice;
     }
 
-    public void fight(Creatures c, Adventures a)
+    // fights are ints for return, so it is possible to remove creature after
+    public int fight(Creatures c, Adventures a)
     {
-        // get dice roll for creature and adventurer and compare
-        // maybe here we check if sneaker to avoid the fight?!?!?
-
-        // somehow knwo whose figting
-        if(a.get_roll() < c.get_roll())
+        if(a.get_roll() < c.get_roll()) // adventurer lost
+        {
             a.set_hp(a.get_hp()-1);
+            return 0;
+        }
+        else if(a.get_roll() > c.get_roll()) // creature lost 
+            return 1;
+        return 2; // tie 
     }
 
-    public void fight( Creatures c, Brawler a)
+    public int fight( Creatures c, Brawler a)
     {
-
+        if(a.fight_roll() < c.get_roll())// adventurer lost
+        {
+            a.set_hp(a.get_hp()-1);
+            return 0;
+        }
+        else if(a.get_roll() > c.get_roll())
+            return 1;
+        return 2; // tie 
     }
-    public void fight( Creatures c, Sneaker a)
+    
+    public int fight( Creatures c, Sneaker a)
     {
-        
+        if(a.dodge() ==1) // fight
+        {
+            if(a.get_roll() < c.get_roll())// adventurer lost
+            {
+                a.set_hp(a.get_hp()-1);
+                return 0;
+            }
+            else if(a.get_roll() > c.get_roll())// creature lost 
+                return 1;
+        }
+        return 2; // tie 
     }
 
 

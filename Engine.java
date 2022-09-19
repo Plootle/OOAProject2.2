@@ -34,15 +34,23 @@ public class Engine {
         creatures.add(seeker);
         creatures.add(seeker);
         
-
         boolean end_condition = false;
         while (end_condition == false)
         {
             //run the turns
-            // move();
             // check();
-            //     fight();
-            //     treasure();
+                // compare locations
+                // if (same room)
+                    // loop through creature list in case of multiple in same room.
+                        // fight()
+                    // else move
+                        // check()
+                        // if (same room)
+                            // loop through creature list in case of multiple in same room.
+                            // fight()
+                        // else treasure (adventurer)
+                            // treasure
+                //^ same logic for creature looking for adnventurers no treasure tho
 
             for(int i =0; i < adventures.size(); i++)
             {
@@ -74,11 +82,5 @@ public class Engine {
                 end_condition = true;
             }
         }
-        
-
-        // System.out.println(thief.get_roll());
-        // System.out.println(mob.get_roll());
-        
-        // System.out.println(gabe.get_roll());
     }
 }
