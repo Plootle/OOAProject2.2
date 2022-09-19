@@ -4,5 +4,10 @@ public class Creatures {
      * i think classify the types, and in info they each ahve their own methods?!?!
      */
 
-    private int dmg = 1;
+    
+    public int get_roll()
+   {
+      MoveSet roll = new MoveSet();
+      return roll.dice();
+   }
 }

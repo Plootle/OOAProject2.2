@@ -2,6 +2,7 @@ public class Adventures
 {
     // well divide each type of adventurer into a subclasses
     // adventurers have
+    
     /*
     * Dice roll mechanic for fighting - Brawlers get +2
     * Encounter chance - Sneakers have 50% to not fight
@@ -12,7 +13,7 @@ public class Adventures
    
    private int hp =3;
    private int treasure = 0;
-   
+   private int location[] = {0,1,1};
    public int get_hp()
    {
       return hp;
@@ -33,6 +34,15 @@ public class Adventures
       treasure++;
    }
 
+   public int[] get_location()
+   {
+      return location;
+   }
+
+   public void set_location(int new_loc[])
+   {
+      location = new_loc;
+   }
    public int get_roll()
    {
       MoveSet roll = new MoveSet();

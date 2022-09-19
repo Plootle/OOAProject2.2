@@ -26,11 +26,25 @@ public class MoveSet {
         return dice;
     }
 
-    public void fight( Creatures c, Adventures a)
+    public void fight(Creatures c, Adventures a)
     {
         // get dice roll for creature and adventurer and compare
         // maybe here we check if sneaker to avoid the fight?!?!?
+
+        // somehow knwo whose figting
+        if(a.get_roll() < c.get_roll())
+            a.set_hp(a.get_hp()-1);
     }
+
+    public void fight( Creatures c, Brawler a)
+    {
+
+    }
+    public void fight( Creatures c, Sneaker a)
+    {
+        
+    }
+
 
     public void traverse(Adventures a)
     {

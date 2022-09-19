@@ -1,18 +1,23 @@
 public class Room {
-  // The Facility’s center Rooms are labeled 0-1-1, 1-1-1, 2-1-1, 3-1-1, and 4-1-1  
-  // first number tells floor, then x/y. We will have to use a triplet format, for room, who is there, and wahts there
+    // The Facility’s center Rooms are labeled 0-1-1, 1-1-1, 2-1-1, 3-1-1, and 4-1-1  
 
-  
-  /* 
-     * idk yet but each element in array may have to be a linked list to be able to hold
-     * where character is, treasure/mob, and for knowing position of adjacent rooms. 
-     * Draw the rooms and layout grid?
-     * 
-     * load what is in the rooms (ie treasure, mosnters, nothing) and output that
-     *  
-      */
+    int room1[][] = {
+        {1,0,0}, {1,0,1}, {1,0,2},
+        {1,1,0}, {1,1,1}, {1,1,2},
+        {1,2,0}, {1,2,1}, {1,2,2}};
 
-  // Room traversal
+    int room2[][] = {
+        {2,0,0}, {2,0,1}, {2,0,2},
+        {2,1,0}, {2,1,1}, {2,1,2},
+        {2,2,0}, {2,2,1}, {2,2,2}};
+    
+    int room3[][] = {
+        {3,0,0}, {3,0,1}, {3,0,2},
+        {3,1,0}, {3,1,1}, {3,1,2},
+        {3,2,0}, {3,2,1}, {3,2,2}};
 
-  // load room (if mobs/treasure)
+    int room4[][] = {
+        {4,0,0}, {4,0,1}, {4,0,2},
+        {4,1,0}, {4,1,1}, {4,1,2},
+        {4,2,0}, {4,2,1}, {4,2,2}};
 }
