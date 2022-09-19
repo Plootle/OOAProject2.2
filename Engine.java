@@ -34,36 +34,33 @@ public class Engine {
         creatures.add(seeker);
         creatures.add(seeker);
         
+        seeker.spawn_loc();
         boolean end_condition = false;
         while (end_condition == false)
         {
             //run the turns
-            // check();
-                // compare locations
-                // if (same room)
-                    // loop through creature list in case of multiple in same room.
-                        // fight()
-                    // else move
-                        // check()
-                        // if (same room)
-                            // loop through creature list in case of multiple in same room.
-                            // fight()
-                        // else treasure (adventurer)
-                            // treasure
-                //^ same logic for creature looking for adnventurers no treasure tho
+            // compare the locations of the creature and the adventurers
+            // if( a location == c location)
+                // loop through creature list in case of multiple entities in same room.
+                // fight() (does it return 0, 1, or 2?) (0 - adv lost) (1 - cre lost) (2 - tie)
+                // if hp == 0
+                    //remove adventurer from ArrayList
+
+            // else move
+                // if( a location == c location)
+                    // loop through creature list in case of multiple entities in same room.
+                    // fight() (does it return 0, 1, or 2?) (0 - adv lost) (1 - cre lost) (2 - tie)
+                    // if hp == 0
+                        //remove adventurer from ArrayList
+                // else if (adventurer turn)
+                    // if (a.get_roll() >= 10)
+                        // treasure++;
+        //^ same logic for creature 
 
             for(int i =0; i < adventures.size(); i++)
             {
                 // decide valid location within floor to move
             }
-            //if( a location == c location)
-                // fight, get result
-                // if hp ==0
-                        //remove adventurer from ArrayList
-            // else seek treasure
-                // roll 2 dice
-                // if (a.get_roll() >= 10)
-                        // treasure++;
 
             //check if the game ends
             if(treasure == 10)

@@ -14,6 +14,7 @@ public class Adventures
    private int hp =3;
    private int treasure = 0;
    private int location[] = {0,1,1};
+   
    public int get_hp()
    {
       return hp;
@@ -29,9 +30,9 @@ public class Adventures
       return treasure;
    }
 
-   public void set_treasure()
+   public void set_treasure(int new_treasure)
    {
-      treasure++;
+      treasure = new_treasure;
    }
 
    public int[] get_location()
@@ -48,5 +49,4 @@ public class Adventures
       MoveSet roll = new MoveSet();
       return roll.dice();
    }
-   
 } 

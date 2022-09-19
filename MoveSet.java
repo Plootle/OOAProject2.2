@@ -6,10 +6,6 @@ public class MoveSet {
      * 
      */
 
-
-    // int get_location;
-    // int set_location;
-
     //roll two 6 sided dice to determine damage
     //roll two 6 sided dice to find treasure (10 or higher)
     public int dice()
@@ -31,7 +27,7 @@ public class MoveSet {
     {
         if(a.get_roll() < c.get_roll()) // adventurer lost
         {
-            a.set_hp(a.get_hp()-1);
+            a.set_hp(a.get_hp() - 1);
             return 0;
         }
         else if(a.get_roll() > c.get_roll()) // creature lost 
@@ -41,9 +37,9 @@ public class MoveSet {
 
     public int fight( Creatures c, Brawler a)
     {
-        if(a.fight_roll() < c.get_roll())// adventurer lost
+        if(a.fight_roll() < c.get_roll()) // adventurer lost
         {
-            a.set_hp(a.get_hp()-1);
+            a.set_hp(a.get_hp() - 1); // creature lost 
             return 0;
         }
         else if(a.get_roll() > c.get_roll())
@@ -53,14 +49,14 @@ public class MoveSet {
     
     public int fight( Creatures c, Sneaker a)
     {
-        if(a.dodge() ==1) // fight
+        if(a.dodge() == 1) // fight
         {
-            if(a.get_roll() < c.get_roll())// adventurer lost
+            if(a.get_roll() < c.get_roll()) // adventurer lost
             {
-                a.set_hp(a.get_hp()-1);
+                a.set_hp(a.get_hp() - 1); 
                 return 0;
             }
-            else if(a.get_roll() > c.get_roll())// creature lost 
+            else if(a.get_roll() > c.get_roll()) // creature lost 
                 return 1;
         }
         return 2; // tie 
@@ -70,11 +66,12 @@ public class MoveSet {
     public void traverse(Adventures a)
     {
         // this might get reworked. essentially this will either be what does ALL movement or have overload calls for creatures since they all move differently
+        // this will call set_location
     }
 
     public void treasure(Adventures a)
     {
-        // Cake
+        if (a.get_roll() >= 10)
+            a.set_treasure(a.get_treasure() + 1);
     }
-
 }
