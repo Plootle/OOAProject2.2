@@ -62,7 +62,6 @@ public class MoveSet {
         return 2; // tie 
     }
 
-
     public void traverse(Adventures a)
     {
         // this might get reworked. essentially this will either be what does ALL movement or have overload calls for creatures since they all move differently
