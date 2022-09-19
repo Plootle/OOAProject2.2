@@ -37,6 +37,11 @@ public class Adventures
 
    public int[] get_location()
    {
+      for(int i = 0; i < location.length; i++)
+      {
+         System.out.print(location[i]);
+      }
+      System.out.println("");
       return location;
    }
 
@@ -44,6 +49,7 @@ public class Adventures
    {
       location = new_loc;
    }
+
    public int get_roll()
    {
       MoveSet roll = new MoveSet();
