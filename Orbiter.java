@@ -5,10 +5,13 @@ public class Orbiter extends Creatures {
     // Wont move if in room with adventurer
     // Starts in an outer room on any of the four levels
 
-    //roll 1-4 for room
-    //roll 1-8 for location
+    public String getName()
+    {
+        return "Orbiter";
+    }
+
+    //roll 1-4 for floor and 1-8 for room
     private int spawn[];
-    
     public int[] spawn_loc()
     {
         Room r = new Room();
@@ -40,9 +43,7 @@ public class Orbiter extends Creatures {
             if(i == room_num)
                 spawn = temp_room[i];
         }
-
-        // for(int i=0; i <spawn.length; i++)
-        //     System.out.print(spawn[i]);
         return spawn;
     }
+    Compass special_move = new Compass();
 }

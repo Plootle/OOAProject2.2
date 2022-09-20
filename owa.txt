@@ -2,5 +2,5 @@ Update comments while at BOLD
 
 Runner getting 2 moves
 implement fighting - order of operations
-Finish movement for creatures
+Finish movement for seeker
 Fully complete Engine

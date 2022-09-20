@@ -7,8 +7,9 @@ public class Creatures {
    */
   
    private int location[];
-
    private int spawn_loc[];
+   public String getName() {return "";}
+
    public int[] get_location()
    {
       // for(int i = 0; i < location.length; i++)
@@ -53,7 +54,7 @@ public class Creatures {
                spawn_loc = temp_room[i];
       }
 
-      // for(int i=0; i <spawn_loc.length; i++)
+      // for(int i = 0; i <spawn_loc.length; i++)
       //    System.out.print(spawn_loc[i]);
       return spawn_loc;
    }

@@ -2,8 +2,8 @@ import java.util.Random;
 
 public class MoveSet {
     /*
-     * Based on our UML this will bet where we traverse the map, take fights, find treasure,  and decide outcomes
-     * 
+     * Based on our UML this will bet where we traverse the map, 
+     * take fights, find treasure,  and decide outcomes
      */ 
 
     //roll two 6 sided dice to determine damage

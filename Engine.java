@@ -14,11 +14,11 @@ public class Engine {
         Adventures a = new Adventures();
         Creatures c = new Creatures();
 
-        Orbiter orbiter1= new Orbiter();
+        Orbiter orbiter1 = new Orbiter();
         Seeker seeker1 = new Seeker();   
         Blinker blinker1 = new Blinker();
         
-        Orbiter orbiter2= new Orbiter();
+        Orbiter orbiter2 = new Orbiter();
         Seeker seeker2 = new Seeker();
         Blinker blinker2 = new Blinker();
         
@@ -26,7 +26,7 @@ public class Engine {
         Seeker seeker3 = new Seeker();
         Blinker blinker3 = new Blinker();
 
-        Orbiter orbiter4= new Orbiter();
+        Orbiter orbiter4 = new Orbiter();
         Seeker seeker4 = new Seeker();
         Blinker blinker4 = new Blinker();
         
@@ -85,7 +85,7 @@ public class Engine {
             // move.traverse(brawler);
             // move.traverse(sneaker);
 
-            for (int i=0; i < adventures.size(); i++)
+            for (int i = 0; i < adventures.size(); i++)
             {
                 a = adventures.get(i);
                 if(a.is_Alive())
@@ -108,10 +108,10 @@ public class Engine {
                 }
             }
 
-            tresCount=0;
-            for (int k=0; k < adventures.size(); k++)
+            tresCount = 0;
+            for (int k = 0; k < adventures.size(); k++)
             {
-                a= adventures.get(k);
+                a = adventures.get(k);
                 tresCount += a.get_treasure();
             }
             //run the turns
@@ -150,7 +150,7 @@ public class Engine {
             }
 
             int deadCount = 0;
-            for(int i=0; i < adventures.size(); i++)
+            for(int i = 0; i < adventures.size(); i++)
             {
                 a = adventures.get(i);
                 if(a.is_Alive() == false)

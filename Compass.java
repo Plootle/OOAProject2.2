@@ -8,6 +8,7 @@ public class Compass{
     int[] F3 = {3,1,1};
     int[] F4 = {4,1,1};
     int direction = 0;
+    boolean cre_check = true;
     
     Random rn = new Random();
     
@@ -62,6 +63,57 @@ public class Compass{
         else
             direction = rn.nextInt(4) + 1;
     }
+
+    public void get_Creature_Direction(Creatures cre)
+    {
+        get_Creature_Location(cre);
+
+        if (direction == 1)
+            North();
+        else if (direction == 2)
+            East();
+        else if (direction == 3)
+            South();
+        else if (direction == 4)
+            West();
+
+        int[] loc_change = {f,r,c};
+        //System.out.println(direction);
+        if(checkValid(loc_change) == true)
+        {
+            cre.set_location(loc_change);
+            System.out.println(cre.getName() + " current location: " + f + r + c);
+        }
+        else
+        {
+            //System.out.println("RE-ROLL");
+            get_Creature_Direction(cre);
+        }
+    }
+
+    public void get_Creature_Location(Creatures cre)
+    {
+        int[] cre_loc = cre.get_location();
+        f = cre_loc[0];
+        r = cre_loc[1];
+        c = cre_loc[2];
+        int[] temp = {f,r,c};
+
+        // orbiter interaction with center room
+        if(cre.getName() == "Orbiter" && F1[0] == temp[0] && F1[1] == temp [1] && F1[2] == temp[2])
+            cre_check = false;
+        else if(cre.getName() == "Orbiter" && F2[0] == temp[0] && F2[1] == temp [1] && F2[2] == temp[2])
+            cre_check = false;
+        else if(cre.getName() == "Orbiter" && F3[0] == temp[0] && F3[1] == temp [1] && F3[2] == temp[2])
+            cre_check = false;
+        else if(cre.getName() == "Orbiter" && F4[0] == temp[0] && F4[1] == temp [1] && F4[2] == temp[2])
+            cre_check = false;
+        else
+            direction = rn.nextInt(4) + 1;
+
+        // I think the seeker searching for adventureres would go in its file
+        // and not here
+    }
     
     public void Up()
     {
@@ -97,6 +149,8 @@ public class Compass{
     {
         if(f >= 1 && f <= 4 && r >= 0 && r <= 2 && c >= 0 && c <= 2) //check floor is valid
             return true;
+        else if (cre_check == false)
+            return false;
         else
             return false;
     }

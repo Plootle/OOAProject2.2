@@ -4,6 +4,12 @@ public class Blinker extends Creatures {
     // Move randomly to any room in any floor
     // START on random room in floor 4
     // Wont move if in room with adventurer
+
+    public String getName()
+    {
+        return "Blinker";
+    }
+
     private int spawn[];
     private int move[];
     
@@ -13,17 +19,12 @@ public class Blinker extends Creatures {
         Random rn = new Random();
         int room_num = rn.nextInt(9);
         int temp_room[][] = r.room4();   
-   
-        //System.out.println("the room number is " + room_num);
 
         for(int i=0; i < temp_room.length; i++)
         {
             if(i == room_num)
                 spawn = temp_room[i];
         }
-
-        // for(int i=0; i <spawn.length; i++)
-        //     System.out.print(spawn[i]);
         return spawn;
     }
 
@@ -37,9 +38,6 @@ public class Blinker extends Creatures {
 
         floor = rn.nextInt(4) + 1;
         room_num = rn.nextInt(8);
-
-        // System.out.println("the floor number is " + floor);
-        // System.out.println("the room number is " + room_num);
 
         if (floor == 1)
             temp_room = r.room1();
@@ -55,9 +53,6 @@ public class Blinker extends Creatures {
             if(i == room_num)
                 move = temp_room[i];
         }
-
-        // for(int i=0; i <spawn.length; i++)
-        //     System.out.print(spawn[i]);
         return move;
     }
 }

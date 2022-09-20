@@ -32,3 +32,5 @@ public class Room {
         return room4;
     }    
 }
+
+//need to print out the rooms (Display everything?)

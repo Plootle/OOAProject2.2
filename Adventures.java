@@ -10,8 +10,7 @@ public class Adventures
     * 3 HP
     */
    
-   
-   private int hp =3;
+   private int hp = 3;
    private int treasure = 0;
    private boolean alive= true;
    private int location[] = {0,1,1};
