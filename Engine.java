@@ -5,6 +5,7 @@ public class Engine {
     public static void main(String args[])
     {
         int tresCount = 0;
+        int temp_count=0;
         MoveSet move = new MoveSet();
         Thief thief = new Thief();
         Brawler brawler = new Brawler();
@@ -46,10 +47,10 @@ public class Engine {
         creatures.add(orbiter2);
         creatures.add(orbiter3);
         creatures.add(orbiter4);
-        creatures.add(seeker1);
-        creatures.add(seeker2);
-        creatures.add(seeker3);
-        creatures.add(seeker4);
+        // creatures.add(seeker1);
+        // creatures.add(seeker2);
+        // creatures.add(seeker3);
+        // creatures.add(seeker4);
 
         for(int i = 0; i < adventures.size(); i++)
         {
@@ -85,35 +86,44 @@ public class Engine {
             // move.traverse(brawler);
             // move.traverse(sneaker);
 
-            for (int i = 0; i < adventures.size(); i++)
-            {
-                a = adventures.get(i);
-                if(a.is_Alive())
-                {
-                    if(a.getName() == "Runner")
-                    {
-                        move.traverse(a);
-                        move.treasure(a);
-                        move.traverse(a);
-                        move.treasure(a);
-                    }
-                    else
-                    {
-                        move.traverse(a);
-                        move.treasure(a);
-                    }
+            // Loop for adventurers loop turn
+            // for (int i = 0; i < adventures.size(); i++)
+            // {
+            //     a = adventures.get(i);
+            //     if(a.is_Alive())
+            //     {
+            //         if(a.getName() == "Runner")
+            //         {
+            //             move.traverse(a);
+            //             move.treasure(a);
+            //             move.traverse(a);
+            //             move.treasure(a);
+            //         }
+            //         else
+            //         {
+            //             move.traverse(a);
+            //             move.treasure(a);
+            //         }
                     
-                    //System.out.println(a.getName() + " location: " + a.get_location());
-                    //System.out.println(a.getName() + " got treasure: " + a.get_treasure());
-                }
-            }
+            //         //System.out.println(a.getName() + " location: " + a.get_location());
+            //         //System.out.println(a.getName() + " got treasure: " + a.get_treasure());
+            //     }
+            // }
 
-            tresCount = 0;
-            for (int k = 0; k < adventures.size(); k++)
+            // tresCount = 0;
+            // for (int k = 0; k < adventures.size(); k++)
+            // {
+            //     a = adventures.get(k);
+            //     tresCount += a.get_treasure();
+            // }
+
+            for(int i = 0; i < creatures.size(); i++)
             {
-                a = adventures.get(k);
-                tresCount += a.get_treasure();
+                c = creatures.get(i);
+                move.c_traverse(c);
+                
             }
+            temp_count++;
             //run the turns
             // compare the locations of the creature and the adventurers
             // if( a location == c location)
@@ -141,6 +151,11 @@ public class Engine {
             //     System.out.println("All creatures have been slain!");
             //     end_condition = true;
             // }
+
+            if (temp_count == 5)
+            {
+                end_condition = true;
+            }
 
             if(tresCount >= 10)
             {

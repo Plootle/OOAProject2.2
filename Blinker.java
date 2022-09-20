@@ -28,31 +28,37 @@ public class Blinker extends Creatures {
         return spawn;
     }
 
-    public int[] special_move()
+    /*
+    * Blinkers special movement is being able to teleport to any room in any floor
+    */
+    public void special_move(Blinker cre)
     {
-        Room r = new Room();
-        int floor = 0;
+        System.out.println("Blinker Moved");
+        Room room = new Room();
+        int f = 0;
         int room_num = 0;
         int temp_room[][] = {{0}};
         Random rn = new Random();
 
-        floor = rn.nextInt(4) + 1;
+        f = rn.nextInt(4) + 1;
         room_num = rn.nextInt(8);
 
-        if (floor == 1)
-            temp_room = r.room1();
-        if (floor == 2)
-            temp_room = r.room2();
-        if (floor == 3)
-            temp_room = r.room3(); 
-        if (floor == 4)
-            temp_room = r.room4();   
+        // Take floor from Room into a variable
+        if (f== 1)
+            temp_room = room.room1();
+        if (f == 2)
+            temp_room = room.room2();
+        if (f == 3)
+            temp_room = room.room3(); 
+        if (f == 4)
+            temp_room = room.room4();   
 
+        // Obtain and set room for Blinker
         for(int i = 0; i < temp_room.length; i++)
         {
             if(i == room_num)
                 move = temp_room[i];
+                cre.set_location(move);// Updates Blinkers location
         }
-        return move;
     }
 }

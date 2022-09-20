@@ -12,6 +12,8 @@ public class Orbiter extends Creatures {
 
     //roll 1-4 for floor and 1-8 for room
     private int spawn[];
+    private int move[];
+    
     public int[] spawn_loc()
     {
         Room r = new Room();
@@ -38,12 +40,48 @@ public class Orbiter extends Creatures {
         if (floor == 4)
             temp_room = r.room4();   
 
-        for(int i=0; i < temp_room.length; i++)
+        for(int i = 0; i < temp_room.length; i++)
         {
             if(i == room_num)
                 spawn = temp_room[i];
         }
         return spawn;
     }
-    Compass special_move = new Compass();
+
+    public void special_move(Orbiter cre)
+    {   
+        System.out.println("Orbiter Moved");
+        int f = 0;
+        int[] cre_loc = cre.get_location();
+        f = cre_loc[0];
+
+        Room room = new Room();
+        int room_num = 0;
+        int temp_room[][] = {{0}};
+        Random rn = new Random();
+
+        room_num = rn.nextInt(8);
+
+        //prevents the room number from being 4 (center)
+        if (room_num >= 4)
+            room_num += 1; 
+        
+        //create the rooms
+        if (f == 1)
+            temp_room = room.room1();
+        if (f == 2)
+            temp_room = room.room2();
+        if (f == 3)
+            temp_room = room.room3(); 
+        if (f == 4)
+            temp_room = room.room4();
+        //check the f value of the creature
+
+        for(int i = 0; i < temp_room.length; i++)
+        {
+            if(i == room_num)
+                move = temp_room[i];
+                cre.set_location(move);
+        }
+    }
 }

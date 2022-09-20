@@ -59,7 +59,11 @@ public class Creatures {
       return spawn_loc;
    }
 
-   
+   public void special_move(Creatures c)
+   {
+      System.out.println("Creature Moved");
+   }
+
    public int get_roll()
    {
       MoveSet roll = new MoveSet();

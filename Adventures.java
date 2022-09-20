@@ -12,7 +12,7 @@ public class Adventures
    
    private int hp = 3;
    private int treasure = 0;
-   private boolean alive= true;
+   private boolean alive = true;
    private int location[] = {0,1,1};
    public String getName() {return "";}
    public int get_hp()

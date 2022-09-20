@@ -69,6 +69,11 @@ public class MoveSet {
         // System.out.println(a.get_location());
     }
 
+    public void c_traverse(Creatures c)
+    {
+        c.special_move(c);
+    }
+
     public void treasure(Adventures a)
     {
         if (a.get_roll() >= 10)
