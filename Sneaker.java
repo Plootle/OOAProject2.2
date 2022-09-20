@@ -8,4 +8,9 @@ public class Sneaker extends Adventures {
         Random rn = new Random();
         return rn.nextInt(2)+1;
     }
+
+    public String getName()
+    {
+        return "Sneaker";
+    }
 }

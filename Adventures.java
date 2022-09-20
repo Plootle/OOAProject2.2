@@ -13,8 +13,9 @@ public class Adventures
    
    private int hp =3;
    private int treasure = 0;
+   private boolean alive= true;
    private int location[] = {0,1,1};
-   
+   public String getName() {return "";}
    public int get_hp()
    {
       return hp;
@@ -37,11 +38,13 @@ public class Adventures
 
    public int[] get_location()
    {
-      for(int i = 0; i < location.length; i++)
-      {
-         System.out.print(location[i]);
-      }
-      System.out.println("");
+      // System.out.print("Prev Location: ");
+      // for(int i = 0; i < location.length; i++)
+      // {
+         
+      //    System.out.print(location[i]);
+      // }
+      // System.out.println("");
       return location;
    }
 
@@ -50,6 +53,13 @@ public class Adventures
       location = new_loc;
    }
 
+   public Boolean is_Alive()
+   {
+      if(hp == 0)
+         alive = false;
+      return alive;
+
+   }
    public int get_roll()
    {
       MoveSet roll = new MoveSet();

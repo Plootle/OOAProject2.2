@@ -4,4 +4,8 @@ public class Brawler extends Adventures {
         MoveSet roll = new MoveSet();
         return roll.dice()+2;
     }
+    public String getName()
+    {
+        return "Brawler";
+    }
 }

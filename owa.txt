@@ -1,45 +1,6 @@
+Update comments while at BOLD
+
 Runner getting 2 moves
-Figure out room traversal
-Complete creatures classes
+implement fighting - order of operations
+Finish movement for creatures
 Fully complete Engine
-
-
-// how adventurers move
-if (room_num == 4)
-{
-    if (floor == 1)
-    {
-        //decide to go down or adjacent
-        rand 5
-        1 north
-        2 east
-        3 south
-        4 west
-        5 down
-    }
-    else if (floor == 4)
-    {
-        //decide to go up or adjacent
-        rand 5
-        1 north
-        2 east
-        3 south
-        4 west
-        5 up
-    }
-    else
-    {
-        //decide to go up, down or adjacent
-        rand 6
-        1 north
-        2 east
-        3 south
-        4 west
-        5 up
-        6 down
-    }
-}
-else
-{
-    rand 4 check bounds
-}

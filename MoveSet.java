@@ -4,7 +4,7 @@ public class MoveSet {
     /*
      * Based on our UML this will bet where we traverse the map, take fights, find treasure,  and decide outcomes
      * 
-     */
+     */ 
 
     //roll two 6 sided dice to determine damage
     //roll two 6 sided dice to find treasure (10 or higher)
@@ -64,8 +64,9 @@ public class MoveSet {
 
     public void traverse(Adventures a)
     {
-        // this might get reworked. essentially this will either be what does ALL movement or have overload calls for creatures since they all move differently
-        // this will call set_location
+        Compass compass = new Compass();
+        compass.get_Direction(a);
+        // System.out.println(a.get_location());
     }
 
     public void treasure(Adventures a)

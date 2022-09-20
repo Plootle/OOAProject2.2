@@ -1,10 +1,12 @@
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 
 public class Engine {
     public static void main(String args[])
     {
+        ArrayList<Integer> treasureArray = new ArrayList<Integer>();
+        int tresCount = 0;
+        MoveSet move = new MoveSet();
         Thief thief = new Thief();
         Brawler brawler = new Brawler();
         Runner runner = new Runner();
@@ -77,49 +79,90 @@ public class Engine {
             a.get_location();
         }
 
+
         boolean end_condition = false;
-        // while (end_condition == false)
-        // {
-        //     //run the turns
-        //     // compare the locations of the creature and the adventurers
-        //     // if( a location == c location)
-        //         // loop through creature list in case of multiple entities in same room.
-        //         // fight() (does it return 0, 1, or 2?) (0 - adv lost) (1 - cre lost) (2 - tie)
-        //         // if hp == 0
-        //             //remove adventurer from ArrayList
+        while (end_condition == false)
+        {
+            // move.traverse(thief);
+            // move.traverse(brawler);
+            // move.traverse(sneaker);
 
-        //     // else move
-        //         // if( a location == c location)
-        //             // loop through creature list in case of multiple entities in same room.
-        //             // fight() (does it return 0, 1, or 2?) (0 - adv lost) (1 - cre lost) (2 - tie)
-        //             // if hp == 0
-        //                 //remove adventurer from ArrayList
-        //         // else if (adventurer turn)
-        //             // if (a.get_roll() >= 10)
-        //                 // treasure++;
-        // //^ same logic for creature 
+            for (int i=0; i < adventures.size(); i++)
+            {
+                a = adventures.get(i);
+                if(a.is_Alive())
+                {
+                    if(a.getName() == "Runner")
+                    {
+                        move.traverse(a);
+                        move.treasure(a);
+                        move.traverse(a);
+                        move.treasure(a);
+                    }
+                    else
+                    {
+                        move.traverse(a);
+                        move.treasure(a);
+                    }
+                    
+                    //System.out.println(a.getName() + " location: " + a.get_location());
+                    //System.out.println(a.getName() + " got treasure: " + a.get_treasure());
+                }
+            }
 
-        //     for(int i =0; i < adventures.size(); i++)
-        //     {
-        //         // decide valid location within floor to move
-        //     }
+            tresCount=0;
+            for (int k=0; k < adventures.size(); k++)
+            {
+                a= adventures.get(k);
+                tresCount += a.get_treasure();
+            }
+            //run the turns
+            // compare the locations of the creature and the adventurers
+            // if( a location == c location)
+                // loop through creature list in case of multiple entities in same room.
+                // fight() (does it return 0, 1, or 2?) (0 - adv lost) (1 - cre lost) (2 - tie)
+                // if hp == 0
+                    //remove adventurer from ArrayList
 
-        //     //check if the game ends
-        //     if(treasure == 10)
-        //     {
-        //         System.out.println("All treasure has been found!");
-        //         end_condition = true;
-        //     }
-        //     if (creatures.size() == 0)
-        //     {
-        //         System.out.println("All creatures have been slain!");
-        //         end_condition = true;
-        //     }
-        //     if (adventures.size() == 0)
-        //     {
-        //         System.out.println("All adventurers have been slain... :(");
-        //         end_condition = true;
-        //     }
-        // }
+            // else move
+                // if( a location == c location)
+                    // loop through creature list in case of multiple entities in same room.
+                    // fight() (does it return 0, 1, or 2?) (0 - adv lost) (1 - cre lost) (2 - tie)
+                    // if hp == 0
+                        //remove adventurer from ArrayList
+                // else if (adventurer turn)
+                    // if (a.get_roll() >= 10)
+                        // treasure++;
+        //^ same logic for creature 
+            
+            //System.out.println("Treasure count is: " + tresCount);
+            //check if the game ends
+            
+            // if (creatures.size() == 0)
+            // {
+            //     System.out.println("All creatures have been slain!");
+            //     end_condition = true;
+            // }
+
+            if(tresCount >= 10)
+            {
+                System.out.println("Total " + tresCount);
+                System.out.println("All treasure has been found!");
+                end_condition = true;
+            }
+
+            int deadCount = 0;
+            for(int i=0; i < adventures.size(); i++)
+            {
+                a = adventures.get(i);
+                if(a.is_Alive() == false)
+                    deadCount++;
+            }
+            if (deadCount == 4)
+            {
+                System.out.println("All adventurers have been slain... :(");
+                end_condition = true;
+            }
+        }
     }
 }
