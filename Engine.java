@@ -4,7 +4,6 @@ import java.util.ArrayList;
 public class Engine {
     public static void main(String args[])
     {
-        ArrayList<Integer> treasureArray = new ArrayList<Integer>();
         int tresCount = 0;
         MoveSet move = new MoveSet();
         Thief thief = new Thief();
@@ -33,7 +32,6 @@ public class Engine {
         
         ArrayList<Adventures> adventures = new ArrayList<Adventures>();
         ArrayList<Creatures> creatures = new ArrayList<Creatures>();
-        int treasure = 0;
         
         adventures.add(thief);
         adventures.add(brawler);
