@@ -37,6 +37,7 @@ public class Engine {
         ArrayList<Adventures> adventures = new ArrayList<Adventures>();
         ArrayList<Creatures> creatures = new ArrayList<Creatures>();
         
+        // Populate ArrayLists
         adventures.add(thief);
         adventures.add(brawler);
         adventures.add(sneaker);
@@ -55,6 +56,7 @@ public class Engine {
         creatures.add(seeker3);
         creatures.add(seeker4);
 
+        // Initialize adventurers beginning location
         for(int i = 0; i < adventures.size(); i++)
         {
             a = adventures.get(i);
@@ -63,6 +65,7 @@ public class Engine {
             adventures.set(i, a);
         }
         
+        // Spawn creatures randomly withing map
         for(int i = 0; i < creatures.size(); i++)
         {
             c = creatures.get(i);
@@ -92,6 +95,7 @@ public class Engine {
         {
             int interact;
             //thiefs turn
+            //check_Room identifies any monsters in same room
             interact = move.check_Room(thief, creatures);
             if(thief.is_Alive())
             {
@@ -106,7 +110,7 @@ public class Engine {
                     }
                 }
             }
-
+            // Check and remove any creatures that died in battle
             move.update_Creatures_Alive(creatures);
 
             // Brawler turn
@@ -177,6 +181,8 @@ public class Engine {
             
 
             // Creatures turn
+
+            // Takes a similar format as adventurers. check current room for fight, take fight or move.
             for(int i = 0; i < creatures.size(); i++)
             {
                 c = creatures.get(i);
@@ -204,6 +210,7 @@ public class Engine {
             
             
             //counting the treasure amount between all the adventurers
+            // part of end condition
             tresCount = 0;
             for (int k = 0; k < adventures.size(); k++)
             {

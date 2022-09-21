@@ -9,11 +9,13 @@ public class Orbiter extends Creatures {
     {
         return "Orbiter";
     }
-
-    //roll 1-4 for floor and 1-8 for room
+    
     private int spawn[];
     private int move[];
     
+    //roll 1-4 for floor and 1-8 for room
+
+    // Call to initialize Orbiters location in map. avoids center room
     public int[] spawn_loc()
     {
         Room r = new Room();
@@ -25,6 +27,7 @@ public class Orbiter extends Creatures {
         floor = rn.nextInt(4) + 1;
         room_num = rn.nextInt(8);
         
+        // Pushes values to avoid center room for orbiter
         if (room_num >= 4)
             room_num += 1;
 
@@ -48,11 +51,11 @@ public class Orbiter extends Creatures {
         return spawn;
     }
 
+    // Orbiter moves around in a circular fashion, never going into center room.
     public int[] special_move(int[] loc)
     {   
         //System.out.println("Orbiter Moved");
         int f = 0;
-        //int[] cre_loc = cre.get_location();
         f = loc[0];
 
         Room room = new Room();

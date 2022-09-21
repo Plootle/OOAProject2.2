@@ -2,10 +2,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MoveSet {
-    /*
-     * Based on our UML this will bet where we traverse the map, 
-     * take fights, find treasure,  and decide outcomes
-     */ 
     /* 
     * We have some encapsulation here because we are bundling our
     * data through methods that are connected to each other.
@@ -65,6 +61,7 @@ public class MoveSet {
                 }
             }
         }
+        // if no creature was found/fought, we can proceed to traverse
         if (interaction == false)
             return 1;
         return 2;// tie occured
@@ -181,6 +178,7 @@ public class MoveSet {
         return 2; // tie 
     }
 
+    // Adventurers traverse method
     public void traverse(Adventures a)
     {
         Compass compass = new Compass();
@@ -188,6 +186,7 @@ public class MoveSet {
         // System.out.println(a.get_location());
     }
 
+    // Cretures traverse method
     public void c_traverse(Creatures c, ArrayList<Adventures> adventures)
     {
         
@@ -226,6 +225,8 @@ public class MoveSet {
             a.set_treasure(a.get_treasure() + 1);
     }
 
+    // Method checks all creatures in ArrayList
+    // based on the if, they get removed from list
     public void update_Creatures_Alive(ArrayList<Creatures> creatures)
     {
         Creatures c = new Creatures();
@@ -233,7 +234,7 @@ public class MoveSet {
             {
                 c = creatures.get(i);
                 if(c.is_Alive() == false)
-                creatures.remove(creatures.get(i));
+                    creatures.remove(creatures.get(i));
             }
     }
 }

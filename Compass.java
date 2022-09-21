@@ -3,6 +3,7 @@ import java.util.Random;
 public class Compass{
 
     int f = 0, r = 0, c = 0; // floor, row, column
+    // instances equivalent to center room in each floor
     int[] F1 = {1,1,1};
     int[] F2 = {2,1,1};
     int[] F3 = {3,1,1};
@@ -14,6 +15,7 @@ public class Compass{
     
     public void get_Direction(Adventures a)
     {
+        // call to get_Adventurer_Location(a); will give us a random location
         get_Adventurer_Location(a);
 
         // decides direction adventurer goes based on get_Adventurer_Location
@@ -38,7 +40,7 @@ public class Compass{
             a.set_location(loc_change);
             //System.out.println(a.getName() + " current location: " + f + r + c);
         }
-        else
+        else // goes here when direction given was not a valid location withing our map
         {
             //System.out.println("RE-ROLL");
             get_Direction(a);
@@ -56,8 +58,8 @@ public class Compass{
         int[] temp = {f,r,c};
         
         // Checks if in center room to allow access to up or down (if floor 2 and 3)
-        // if floor 1, allows to go down
-        // if floor 4, allows to go up
+        // if floor 1, allows to go down + NESW
+        // if floor 4, allows to go up+ NESW
         // otherwise NESW
         if(F1[0] == temp[0] && F1[1] == temp [1] && F1[2] == temp[2])
             direction = rn.nextInt(6);

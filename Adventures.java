@@ -56,6 +56,11 @@ public class Adventures
       location = new_loc;
    }
 
+   /*
+    * This function helps track of active Adventurers in game
+    * By setting their location to a space not within the map, we secure crreatures never attempt to fight with 
+    * an adventurer that shouldn't be active
+    */
    public Boolean is_Alive()
    {
       if(hp == 0)

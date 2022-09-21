@@ -7,6 +7,7 @@ public class Sneaker extends Adventures {
         return "Sneaker";
     }
 
+    // function for giving Sneaker a chance to avoid a fight.
     public int dodge()
     {
         Random rn = new Random();

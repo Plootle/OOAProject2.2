@@ -13,6 +13,9 @@ public class Blinker extends Creatures {
     private int spawn[];
     private int move[];
     
+    /*
+     * Blinker has a unique spawn mechanic of ALWAYS starting the game at floor 4
+     */
     public int[] spawn_loc()
     {
         Room r = new Room();

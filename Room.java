@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Room {
-    // The Facility’s center Rooms are labeled 0-1-1, 1-1-1, 2-1-1, 3-1-1, and 4-1-1  
     // Our Room.Java file is a good example of cohesion due to its design.
     // It's design is soley focused on creating the rooms and displaying them.
     public int[][] room0()
@@ -132,7 +131,7 @@ public class Room {
                 System.out.print(" ");
             }
 
-
+            // Helps set format for grid
             if(count == 9)
             {
                 System.out.println("");
@@ -142,5 +141,3 @@ public class Room {
         }
     }
 }
-
-//need to print out the rooms (Display everything?)

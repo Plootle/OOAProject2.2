@@ -1,11 +1,6 @@
 import java.util.Random;
 
 public class Creatures {
-   /*
-   * Ill have to study this but I believe Inhertiance shenanigans will occur here
-   * i think classify the types, and in info they each ahve their own methods?!?!
-   */
-  
    //Here, we are able to take advantage of inheritance because 
    //the creatures subclasses are derived from here
    private int spawn_loc[];
@@ -29,16 +24,20 @@ public class Creatures {
       location = new_loc;
    }
 
+   // Function used to check if creature is alive. Used for deleting after a loss with an adventurer
    public Boolean is_Alive()
    {
       return alive;
    }
 
+   // Call for when they lose a fight
    public void has_Died()
    {
       alive = false;
    }
    
+   // Spawn mechanic used at the beginning of the game.
+   // Creature will be given a random floor and room within our map to begin
    public int[] spawn_loc()
    {
       Room r = new Room();

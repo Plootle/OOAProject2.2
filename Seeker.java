@@ -11,6 +11,7 @@ public class Seeker extends Creatures {
 
     private int move[];
 
+    // Move into adjacent room of adventurers
     public int[] special_move(int[] loc, ArrayList<Adventures> adventures)
     {   
         Adventures a =new Adventures();

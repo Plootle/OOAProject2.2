@@ -6,6 +6,7 @@ public class Thief extends Adventures {
         return "Thief";
     }
 
+    // adds 1 to all roll
     public int get_roll()
     {
         MoveSet roll = new MoveSet();
