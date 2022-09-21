@@ -12,6 +12,9 @@ public class Engine {
         Runner runner = new Runner();
         Sneaker sneaker = new Sneaker();
 
+        // here is a good example of identity, where we establish our two
+        // sides and fill them with unique entities and have each entity
+        // store their own stats such as location, treasure, and health.
         Adventures a = new Adventures();
         Creatures c = new Creatures();
 

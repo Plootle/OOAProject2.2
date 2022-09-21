@@ -1,20 +1,29 @@
 public class Adventures 
 {
-    // well divide each type of adventurer into a subclasses
-    // adventurers have
+   // well divide each type of adventurer into a subclasses
+   // adventurers have
     
-    /*
-    * Dice roll mechanic for fighting - Brawlers get +2
-    * Encounter chance - Sneakers have 50% to not fight
-    * Move mechanic (moving between rooms, fighting, treasure hunting) - Runners get 2 moves
-    * 3 HP
-    */
+   /*
+   * Dice roll mechanic for fighting - Brawlers get +2
+   * Encounter chance - Sneakers have 50% to not fight
+   * Move mechanic (moving between rooms, fighting, treasure hunting) - Runners get 2 moves
+   * 3 HP
+   */
+   
+   // Here, we are able to take advantage of inheritance because 
+   // the adventurer subclasses are derived from here
    
    private int hp = 3;
    private int treasure = 0;
    private boolean alive = true;
    private int location[] = {0,1,1};
    public String getName() {return "";}
+
+   /*
+    * Here we use some abstraction. Above are some private variables that
+    * we are hiding and below we have some public variables that reduce 
+    * the complexity of our program while increasing its efficiency.
+    */
    
    public int get_hp()
    {
@@ -59,6 +68,12 @@ public class Adventures
       return alive;
 
    }
+
+   /*
+   * This is an example of polymorphism because some of the 
+   * adventurers have different abilities that deal with dice,
+   * so this function occurs in several different forms.
+   */
    public int get_roll()
    {
       MoveSet roll = new MoveSet();

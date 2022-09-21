@@ -3,7 +3,8 @@ import java.util.Arrays;
 
 public class Room {
     // The Facility’s center Rooms are labeled 0-1-1, 1-1-1, 2-1-1, 3-1-1, and 4-1-1  
-
+    // Our Room.Java file is a good example of cohesion due to its design.
+    // It's design is soley focused on creating the rooms and displaying them.
     public int[][] room0()
     {
         int room0[][] = {{0,1,1}};

@@ -6,6 +6,12 @@ public class MoveSet {
      * Based on our UML this will bet where we traverse the map, 
      * take fights, find treasure,  and decide outcomes
      */ 
+    /* 
+    * We have some encapsulation here because we are bundling our
+    * data through methods that are connected to each other.
+    * No other unauthorized classes have direct access to them.
+    */
+    
 
     //roll two 6 sided dice to determine damage
     //roll two 6 sided dice to find treasure (10 or higher)

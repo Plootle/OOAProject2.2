@@ -6,7 +6,8 @@ public class Creatures {
    * i think classify the types, and in info they each ahve their own methods?!?!
    */
   
-   
+   //Here, we are able to take advantage of inheritance because 
+   //the creatures subclasses are derived from here
    private int spawn_loc[];
    public String getName() {return "";}
    private boolean alive = true;
