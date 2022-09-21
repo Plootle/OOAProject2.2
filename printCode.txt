@@ -1,0 +1,132 @@
+for(int i = 0; i < creatures.size(); i++)
+            {
+                c = creatures.get(i);
+                System.out.print(c.getName() + " location: ");
+                
+                int[] temp = c.get_location();
+                for (int j=0; j < temp.length; j++)
+                {
+                    System.out.print(temp[j]);
+                }
+                System.out.println("");
+            }
+            System.out.println("Next turn");
+
+
+
+// tresCount = 0;
+// for (int k = 0; k < adventures.size(); k++)
+// {
+//     a = adventures.get(k);
+//     tresCount += a.get_treasure();
+// }
+
+//System.out.println(a.getName() + " location: " + a.get_location());
+//System.out.println(a.getName() + " got treasure: " + a.get_treasure());
+
+
+
+
+// sneaker and brawler fight code
+    public int fight( Creatures c, Brawler a)
+    {
+        System.out.println(a.getName());
+        if(a.fight_roll() < c.get_roll()) // adventurer lost
+        {
+            a.set_hp(a.get_hp() - 1); // creature lost 
+            return 0;
+        }
+        else if(a.get_roll() > c.get_roll())
+        {
+            c.has_Died();
+            return 1;
+        }
+        return 2; // tie 
+    }
+    
+    public int fight( Creatures c, Sneaker a)
+    {
+        System.out.println(a.getName());
+        if(a.dodge() == 1) // fight
+        {
+            if(a.get_roll() < c.get_roll()) // adventurer lost
+            {
+                a.set_hp(a.get_hp() - 1); 
+                return 0;
+            }
+            else if(a.get_roll() > c.get_roll()) // creature lost 
+            {
+                c.has_Died();
+                return 1;
+            }
+        }
+        else
+        {
+            System.out.println("Sneaker Avoided a fight "); 
+        }
+        return 2; // tie 
+    }
+
+
+
+
+
+
+// Loop for adventurers loop turn
+            for (int i = 0; i < adventures.size(); i++)
+            {
+
+                a = adventures.get(i);
+                if(a.is_Alive())// lets only the adventurers that are alive take a turn
+                {
+                    interact = move.check_Room(a, creatures);
+                    if(a.getName() == "Runner")
+                    {
+                        if ( interact==1)
+                        {
+                            move.traverse(a);
+                            
+                            interact = move.check_Room(a, creatures);
+                            if (interact==1 && a.is_Alive() == true)
+                            {
+                                move.treasure(a);
+                            }
+                        }
+                        interact = move.check_Room(a, creatures);
+                        if (interact==1 && a.is_Alive() == true)
+                        {
+                            move.traverse(a);
+                            interact = move.check_Room(a, creatures);
+                            if (interact ==1 && a.is_Alive() == true)
+                            {
+                                move.treasure(a);
+                            }
+                        }
+                    }
+                    else
+                    {   
+                        // if no fight occures
+                        interact = move.check_Room(a, creatures);
+                        if (interact ==1 && a.is_Alive() == true)
+                        {
+                            move.traverse(a);
+                            interact = move.check_Room(a, creatures);
+                            if (interact ==1 && a.is_Alive() == true)
+                            {
+                                move.treasure(a);
+                            }
+                        }
+                        //check if there is 1 or more creatures in current location
+                            //if yes  
+                                // fight each one
+                            //else
+                                //  move.traverse(a);
+                                // call check again
+                                    //if yes
+                                        // fight each one
+                                    //else
+                                        //move.treasure(a);
+
+                    }
+                }
+            }

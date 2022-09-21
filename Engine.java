@@ -1,11 +1,9 @@
 import java.util.ArrayList;
 
-
 public class Engine {
     public static void main(String args[])
     {
         int tresCount = 0;
-        int temp_count=0;
         MoveSet move = new MoveSet();
         Thief thief = new Thief();
         Brawler brawler = new Brawler();
@@ -47,10 +45,10 @@ public class Engine {
         creatures.add(orbiter2);
         creatures.add(orbiter3);
         creatures.add(orbiter4);
-        // creatures.add(seeker1);
-        // creatures.add(seeker2);
-        // creatures.add(seeker3);
-        // creatures.add(seeker4);
+        creatures.add(seeker1);
+        creatures.add(seeker2);
+        creatures.add(seeker3);
+        creatures.add(seeker4);
 
         for(int i = 0; i < adventures.size(); i++)
         {
@@ -64,9 +62,7 @@ public class Engine {
         {
             c = creatures.get(i);
             c.set_location(c.spawn_loc());
-            
             creatures.set(i, c);
-            //c.get_location();
         }
 
         // adventurers first move (go from 011 to 111)
@@ -75,92 +71,138 @@ public class Engine {
             int [] temp_arr = {1, 1, 1};
             a = adventures.get(i);
             a.set_location(temp_arr);
-            a.get_location();
         }
-
-
+       
         boolean end_condition = false;
         while (end_condition == false)
         {
-            // move.traverse(thief);
-            // move.traverse(brawler);
-            // move.traverse(sneaker);
+            //thiefs turn
+            int interact = move.check_Room(thief, creatures);
+            if(thief.is_Alive())
+            {
+                interact = move.check_Room(thief, creatures);
+                if (interact ==1 && thief.is_Alive() == true)
+                {
+                    move.traverse(thief);
+                    interact = move.check_Room(thief, creatures);
+                    if (interact ==1 && thief.is_Alive() == true)
+                    {
+                        move.treasure(thief);
+                    }
+                }
+            }
 
-            // Loop for adventurers loop turn
-            // for (int i = 0; i < adventures.size(); i++)
-            // {
-            //     a = adventures.get(i);
-            //     if(a.is_Alive())
-            //     {
-            //         if(a.getName() == "Runner")
-            //         {
-            //             move.traverse(a);
-            //             move.treasure(a);
-            //             move.traverse(a);
-            //             move.treasure(a);
-            //         }
-            //         else
-            //         {
-            //             move.traverse(a);
-            //             move.treasure(a);
-            //         }
-                    
-            //         //System.out.println(a.getName() + " location: " + a.get_location());
-            //         //System.out.println(a.getName() + " got treasure: " + a.get_treasure());
-            //     }
-            // }
+            // Brawler turn
+            interact = move.check_Room(brawler, creatures);
+            if(brawler.is_Alive())
+            {
+                interact = move.check_Room(brawler, creatures);
+                if (interact ==1 && brawler.is_Alive() == true)
+                {
+                    move.traverse(brawler);
+                    interact = move.check_Room(brawler, creatures);
+                    if (interact ==1 && brawler.is_Alive() == true)
+                    {
+                        move.treasure(brawler);
+                    }
+                }
+            }
 
-            // tresCount = 0;
-            // for (int k = 0; k < adventures.size(); k++)
-            // {
-            //     a = adventures.get(k);
-            //     tresCount += a.get_treasure();
-            // }
+            // Sneakers turn
+            interact = move.check_Room(sneaker, creatures);
+            if(sneaker.is_Alive())
+            {
+                interact = move.check_Room(sneaker, creatures);
+                if (interact ==1 && sneaker.is_Alive() == true)
+                {
+                    move.traverse(sneaker);
+                    interact = move.check_Room(sneaker, creatures);
+                    if (interact ==1 && sneaker.is_Alive() == true)
+                    {
+                        move.treasure(sneaker);
+                    }
+                }
+            }
 
+            // Runner turn
+            interact = move.check_Room(runner, creatures);
+            if(runner.is_Alive())
+            {
+                interact = move.check_Room(runner, creatures);
+                if (interact ==1 && runner.is_Alive() == true)
+                {
+                    move.traverse(runner);
+                    interact = move.check_Room(runner, creatures);
+                    if (interact ==1 && runner.is_Alive() == true)
+                    {
+                        move.treasure(runner);
+                    }
+                }
+                
+                interact = move.check_Room(runner, creatures);
+                if (interact ==1 && runner.is_Alive() == true)
+                {
+                    move.traverse(runner);
+                    interact = move.check_Room(runner, creatures);
+                    if (interact ==1 && runner.is_Alive() == true)
+                    {
+                        move.treasure(runner);
+                    }
+                }
+            }
+            
+            for(int i =0; i < creatures.size(); i++)
+            {
+                c = creatures.get(i);
+                if(c.is_Alive() == false)
+                creatures.remove(creatures.get(i));
+            }
+
+            // Creatures turn
             for(int i = 0; i < creatures.size(); i++)
             {
                 c = creatures.get(i);
-                move.c_traverse(c);
-                
+                if(c.is_Alive() == true)
+                {
+                    // if creature took fight and loses 
+                    interact = move.check_Room(c, adventures);
+                    if( interact== 1)
+                    {
+                        creatures.remove(creatures.get(i));
+                    }
+                    else if(interact == 0)
+                    {
+                        move.c_traverse(c, adventures);
+                        interact = move.check_Room(c, adventures);
+                    }
+                }
             }
-            temp_count++;
-            //run the turns
-            // compare the locations of the creature and the adventurers
-            // if( a location == c location)
-                // loop through creature list in case of multiple entities in same room.
-                // fight() (does it return 0, 1, or 2?) (0 - adv lost) (1 - cre lost) (2 - tie)
-                // if hp == 0
-                    //remove adventurer from ArrayList
 
-            // else move
-                // if( a location == c location)
-                    // loop through creature list in case of multiple entities in same room.
-                    // fight() (does it return 0, 1, or 2?) (0 - adv lost) (1 - cre lost) (2 - tie)
-                    // if hp == 0
-                        //remove adventurer from ArrayList
-                // else if (adventurer turn)
-                    // if (a.get_roll() >= 10)
-                        // treasure++;
-        //^ same logic for creature 
-            
-            //System.out.println("Treasure count is: " + tresCount);
-            //check if the game ends
-            
-            // if (creatures.size() == 0)
-            // {
-            //     System.out.println("All creatures have been slain!");
-            //     end_condition = true;
-            // }
-
-            if (temp_count == 5)
+            for(int i =0; i < creatures.size(); i++)
             {
+                c = creatures.get(i);
+                if(c.is_Alive() == false)
+                creatures.remove(creatures.get(i));
+            }
+
+            //counting the treasure amount between all the adventurers
+            tresCount = 0;
+            for (int k = 0; k < adventures.size(); k++)
+            {
+                a = adventures.get(k);
+                tresCount += a.get_treasure();
+            }
+
+            //check if the game ends
+            if(tresCount >= 10)
+            {
+                System.out.println("All treasure has been found!");
                 end_condition = true;
             }
 
-            if(tresCount >= 10)
+            if (creatures.size() == 0)
             {
-                System.out.println("Total " + tresCount);
-                System.out.println("All treasure has been found!");
+                System.out.println("All creatures have been slain!");
                 end_condition = true;
             }
 
@@ -173,9 +215,15 @@ public class Engine {
             }
             if (deadCount == 4)
             {
-                System.out.println("All adventurers have been slain... :(");
+                System.out.println("All adventurers have been slain...");
                 end_condition = true;
             }
+        }
+        System.out.println("total treasure " + tresCount);
+        for (int f = 0; f < creatures.size(); f++)
+        {
+            c = creatures.get(f);
+            System.out.println(c.getName());
         }
     }
 }

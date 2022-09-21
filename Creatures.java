@@ -9,9 +9,11 @@ public class Creatures {
    private int location[];
    private int spawn_loc[];
    public String getName() {return "";}
+   private boolean alive = true;
 
    public int[] get_location()
    {
+      // System.out.print("Prev Location: ");
       // for(int i = 0; i < location.length; i++)
       // {
       //    System.out.print(location[i]);
@@ -24,7 +26,17 @@ public class Creatures {
    {
       location = new_loc;
    }
-    
+
+   public Boolean is_Alive()
+   {
+      return alive;
+   }
+
+   public void has_Died()
+   {
+      alive = false;
+   }
+   
    public int[] spawn_loc()
    {
       Room r = new Room();
@@ -59,10 +71,7 @@ public class Creatures {
       return spawn_loc;
    }
 
-   public void special_move(Creatures c)
-   {
-      System.out.println("Creature Moved");
-   }
+   
 
    public int get_roll()
    {

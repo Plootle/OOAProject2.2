@@ -48,12 +48,12 @@ public class Orbiter extends Creatures {
         return spawn;
     }
 
-    public void special_move(Orbiter cre)
+    public int[] special_move(int[] loc)
     {   
-        System.out.println("Orbiter Moved");
+        //System.out.println("Orbiter Moved");
         int f = 0;
-        int[] cre_loc = cre.get_location();
-        f = cre_loc[0];
+        //int[] cre_loc = cre.get_location();
+        f = loc[0];
 
         Room room = new Room();
         int room_num = 0;
@@ -75,13 +75,12 @@ public class Orbiter extends Creatures {
             temp_room = room.room3(); 
         if (f == 4)
             temp_room = room.room4();
-        //check the f value of the creature
 
         for(int i = 0; i < temp_room.length; i++)
         {
             if(i == room_num)
                 move = temp_room[i];
-                cre.set_location(move);
         }
+        return move;
     }
 }

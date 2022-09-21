@@ -10,6 +10,6 @@ public class Sneaker extends Adventures {
     public int dodge()
     {
         Random rn = new Random();
-        return rn.nextInt(2)+1;
+        return rn.nextInt(2);
     }
 }

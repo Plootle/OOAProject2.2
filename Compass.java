@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Compass{
 
-    int f = 0, r = 0, c = 0;
+    int f = 0, r = 0, c = 0; // floor, row, column
     int[] F1 = {1,1,1};
     int[] F2 = {2,1,1};
     int[] F3 = {3,1,1};
@@ -16,6 +16,7 @@ public class Compass{
     {
         get_Adventurer_Location(a);
 
+        // decides direction adventurer goes based on get_Adventurer_Location
         if (direction == 0)
             Down();
         else if (direction == 1)
@@ -31,10 +32,11 @@ public class Compass{
 
         int[] loc_change = {f,r,c};
         //System.out.println(direction);
+        // Passes location to checkValid to see if its within our map
         if(checkValid(loc_change) == true)
         {
             a.set_location(loc_change);
-            System.out.println(a.getName() + " current location: " + f + r + c);
+            //System.out.println(a.getName() + " current location: " + f + r + c);
         }
         else
         {
@@ -43,6 +45,8 @@ public class Compass{
         }
     }
     
+    // Checks if in center of room to go up or down a floor
+    // Generates room to go to
     public void get_Adventurer_Location(Adventures a)
     {
         int[] adv_loc = a.get_location();
@@ -51,7 +55,10 @@ public class Compass{
         c = adv_loc[2];
         int[] temp = {f,r,c};
         
-        // center room
+        // Checks if in center room to allow access to up or down (if floor 2 and 3)
+        // if floor 1, allows to go down
+        // if floor 4, allows to go up
+        // otherwise NESW
         if(F1[0] == temp[0] && F1[1] == temp [1] && F1[2] == temp[2])
             direction = rn.nextInt(6);
         else if(F2[0] == temp[0] && F2[1] == temp [1] && F2[2] == temp[2])
@@ -94,6 +101,11 @@ public class Compass{
         f += 1;
     }
 
+    /*
+     * Validates the location adventurer is atttemting to go through
+     * if all values are withing our grid, returns true to get_Direction
+     * else get_Direction will re-roll the values until a valid position is obtained
+     */
     public boolean checkValid(int[] loc_change)
     {
         if(f >= 1 && f <= 4 && r >= 0 && r <= 2 && c >= 0 && c <= 2) //check floor is valid
