@@ -1,0 +1,64 @@
+Game: 1
+All treasure has been found!
+Game: 2
+All treasure has been found!
+Game: 3
+All treasure has been found!
+Game: 4
+All treasure has been found!
+Game: 5
+All treasure has been found!
+Game: 6
+All adventurers have been slain...
+Game: 7
+All treasure has been found!
+Game: 8
+All treasure has been found!
+Game: 9
+All adventurers have been slain...
+Game: 10
+All treasure has been found!
+Game: 11
+All adventurers have been slain...
+Game: 12
+All treasure has been found!
+Game: 13
+All adventurers have been slain...
+Game: 14
+All adventurers have been slain...
+Game: 15
+All treasure has been found!
+Game: 16
+All treasure has been found!
+Game: 17
+All treasure has been found!
+Game: 18
+All treasure has been found!
+Game: 19
+All treasure has been found!
+Game: 20
+All treasure has been found!
+Game: 21
+All treasure has been found!
+Game: 22
+All treasure has been found!
+Game: 23
+All treasure has been found!
+Game: 24
+All treasure has been found!
+Game: 25
+All treasure has been found!
+Game: 26
+All adventurers have been slain...
+Game: 27
+All creatures have been slain!
+Game: 28
+All treasure has been found!
+Game: 29
+All treasure has been found!
+Game: 30
+All treasure has been found!
+Summary:
+Times all treasure was found: 23
+Times all adventurers died: 6
+Times all creatures died: 1

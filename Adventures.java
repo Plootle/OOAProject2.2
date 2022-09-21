@@ -52,7 +52,7 @@ public class Adventures
       if(hp == 0)
       {
          alive = false;
-         int[] deadlocation= {0,1,1};
+         int[] deadlocation= {0,0,0};
          set_location(deadlocation);
       }
          

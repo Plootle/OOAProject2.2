@@ -6,10 +6,11 @@ public class Creatures {
    * i think classify the types, and in info they each ahve their own methods?!?!
    */
   
-   private int location[];
+   
    private int spawn_loc[];
    public String getName() {return "";}
    private boolean alive = true;
+   private int location[];
 
    public int[] get_location()
    {

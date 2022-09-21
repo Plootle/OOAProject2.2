@@ -1,5 +1,14 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Room {
     // The Facility’s center Rooms are labeled 0-1-1, 1-1-1, 2-1-1, 3-1-1, and 4-1-1  
+
+    public int[][] room0()
+    {
+        int room0[][] = {{0,1,1}};
+        return room0;
+    }
 
     public int[][] room1(){
         int room1[][] = {
@@ -31,6 +40,106 @@ public class Room {
             {4,2,0}, {4,2,1}, {4,2,2}};
         return room4;
     }    
+
+    public void Display(ArrayList<Creatures> creatures, ArrayList<Adventures> adventurer)
+    {
+        Display_Helper(room0(), creatures, adventurer);
+        System.out.println("");
+        Display_Helper(room1(), creatures, adventurer);
+        Display_Helper(room2(), creatures, adventurer);
+        Display_Helper(room3(), creatures, adventurer);
+        Display_Helper(room4(), creatures, adventurer);
+        
+        
+    }
+
+    public void Display_Helper(int[][] room, ArrayList<Creatures> creatures, ArrayList<Adventures> adventurer)
+    {
+        Adventures a = new Adventures();
+        Creatures c = new Creatures();
+        ArrayList<Character> advInitials = new ArrayList<Character>();
+        ArrayList<Character> creInitials = new ArrayList<Character>();
+        
+        int count = 0;
+        for(int i = 0; i < room.length; i++)
+        {
+            int[] space = room[i];
+            //int f = space[0];
+            //int r = space[1];
+            //int c = space[2];
+            
+            advInitials.clear();
+            creInitials.clear();
+            // Prints Room in format (Floor-Row-Column)
+            for(int j=0; j < room[i].length; j++)
+            {
+                if(j == room[i].length-1)
+                    System.out.print(space[j] + ": ");
+                else
+                    System.out.print(space[j] + "-");
+                
+                count++;
+            }
+            
+            // creates list of all Adventurers in room, saves initials
+            for(int j=0; j < adventurer.size(); j++)
+            {
+                a = adventurer.get(j);
+                char advInitial = a.getName().charAt(0);
+                if(Arrays.equals(a.get_location(), space))
+                {
+                    advInitials.add(advInitial);
+                }
+                
+            }
+
+            // creates list of all Creatures in room, saves initials
+            for(int j=0; j < creatures.size(); j++)
+            {
+                c = creatures.get(j);
+                char creInitial = c.getName().charAt(0);
+                if(Arrays.equals(c.get_location(), space))
+                {
+                    creInitials.add(creInitial);
+                }
+                
+            }
+
+            
+
+            // Print Adventurers Initials
+            if(advInitials.size() == 0)
+                System.out.print("-:");
+            else
+            {
+                for(int j=0; j < advInitials.size(); j++)
+                {
+                    System.out.print(advInitials.get(j));
+                }
+                System.out.print(":");
+            }
+
+            //Print Creatures Initials
+            if(creInitials.size() == 0)
+                System.out.print("- ");
+            else
+            {
+                for(int j=0; j < creInitials.size(); j++)
+                {
+                    System.out.print(creInitials.get(j));
+                }
+                System.out.print(" ");
+            }
+
+
+            if(count == 9)
+            {
+                System.out.println("");
+                count = 0;
+                
+            }   
+        }
+    }
 }
 
 //need to print out the rooms (Display everything?)

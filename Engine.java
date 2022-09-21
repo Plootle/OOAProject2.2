@@ -1,9 +1,11 @@
 import java.util.ArrayList;
 
 public class Engine {
-    public static void main(String args[])
+    public int Engine1()
     {
+        //int turnCount = 0;
         int tresCount = 0;
+        Room room = new Room();
         MoveSet move = new MoveSet();
         Thief thief = new Thief();
         Brawler brawler = new Brawler();
@@ -65,19 +67,29 @@ public class Engine {
             creatures.set(i, c);
         }
 
+        // This all represents round 0, where adventurers spawn
+        // adventurers first move (go from 011 to 111)
+        // System.out.println("RotLA Turn " + turnCount + ":");
+        // room.Display(creatures, adventures);
         // adventurers first move (go from 011 to 111)
         for (int i = 0; i < adventures.size(); i++)
         {
             int [] temp_arr = {1, 1, 1};
             a = adventures.get(i);
-            a.set_location(temp_arr);
+            a.set_location(temp_arr);   
         }
-       
+        //turnCount++;
+
+        // This shows adventurers going into the first floor
+        // System.out.println("RotLA Turn " + turnCount + ":");
+        // room.Display(creatures, adventures);
+        
         boolean end_condition = false;
         while (end_condition == false)
         {
+            int interact;
             //thiefs turn
-            int interact = move.check_Room(thief, creatures);
+            interact = move.check_Room(thief, creatures);
             if(thief.is_Alive())
             {
                 interact = move.check_Room(thief, creatures);
@@ -91,6 +103,8 @@ public class Engine {
                     }
                 }
             }
+
+            move.update_Creatures_Alive(creatures);
 
             // Brawler turn
             interact = move.check_Room(brawler, creatures);
@@ -108,6 +122,8 @@ public class Engine {
                 }
             }
 
+            move.update_Creatures_Alive(creatures);
+
             // Sneakers turn
             interact = move.check_Room(sneaker, creatures);
             if(sneaker.is_Alive())
@@ -123,6 +139,8 @@ public class Engine {
                     }
                 }
             }
+
+            move.update_Creatures_Alive(creatures);
 
             // Runner turn
             interact = move.check_Room(runner, creatures);
@@ -151,12 +169,9 @@ public class Engine {
                 }
             }
             
-            for(int i =0; i < creatures.size(); i++)
-            {
-                c = creatures.get(i);
-                if(c.is_Alive() == false)
-                creatures.remove(creatures.get(i));
-            }
+            move.update_Creatures_Alive(creatures);
+            
+            
 
             // Creatures turn
             for(int i = 0; i < creatures.size(); i++)
@@ -178,13 +193,13 @@ public class Engine {
                 }
             }
 
-            for(int i =0; i < creatures.size(); i++)
-            {
-                c = creatures.get(i);
-                if(c.is_Alive() == false)
-                creatures.remove(creatures.get(i));
-            }
-
+            move.update_Creatures_Alive(creatures);
+            //System.out.println("");
+            //turnCount++;
+            // System.out.println("RotLA Turn " + turnCount + ":");
+            // room.Display(creatures, adventures);
+            
+            
             //counting the treasure amount between all the adventurers
             tresCount = 0;
             for (int k = 0; k < adventures.size(); k++)
@@ -198,12 +213,7 @@ public class Engine {
             {
                 System.out.println("All treasure has been found!");
                 end_condition = true;
-            }
-
-            if (creatures.size() == 0)
-            {
-                System.out.println("All creatures have been slain!");
-                end_condition = true;
+                return 1;
             }
 
             int deadCount = 0;
@@ -217,13 +227,44 @@ public class Engine {
             {
                 System.out.println("All adventurers have been slain...");
                 end_condition = true;
+                return 2;
+            }
+            
+            if (creatures.size() == 0)
+            {
+                System.out.println("All creatures have been slain!");
+                end_condition = true;
+                return 3;
             }
         }
-        System.out.println("total treasure " + tresCount);
-        for (int f = 0; f < creatures.size(); f++)
-        {
-            c = creatures.get(f);
-            System.out.println(c.getName());
-        }
+        
+        //System.out.println("total treasure " + tresCount);
+        
+        // int blinkerCount=0;
+        // int seekerCount=0;
+        // int orbiterCount=0;
+        // for (int f = 0; f < creatures.size(); f++)
+        // {
+        //     c = creatures.get(f);
+        //     if(c.getName() == "Blinker")
+        //         blinkerCount++;
+        //     if(c.getName() == "Seeker")
+        //         seekerCount++;
+        //     if(c.getName() == "Orbiter")
+        //         orbiterCount++;
+        // }
+        
+        
+
+        // for(int i=0; i < adventures.size(); i++)
+        // {
+        //     a = adventures.get(i);
+        //     System.out.println(a.getName() + " - " + a.get_treasure() + " Treasure(s) - " + a.get_hp() + " Health left");
+        // }
+
+        // System.out.println("\nBlinkers - " + blinkerCount + " Remaining");
+        // System.out.println("Seekers - " + seekerCount + " Remaining");
+        // System.out.println("Orbiters - " + orbiterCount + " Remaining");
+        return 0;
     }
 }

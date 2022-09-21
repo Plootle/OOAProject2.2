@@ -219,4 +219,15 @@ public class MoveSet {
         if (a.get_roll() >= 10)
             a.set_treasure(a.get_treasure() + 1);
     }
+
+    public void update_Creatures_Alive(ArrayList<Creatures> creatures)
+    {
+        Creatures c = new Creatures();
+        for(int i =0; i < creatures.size(); i++)
+            {
+                c = creatures.get(i);
+                if(c.is_Alive() == false)
+                creatures.remove(creatures.get(i));
+            }
+    }
 }
